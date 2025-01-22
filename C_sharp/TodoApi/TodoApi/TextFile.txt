@@ -1,0 +1,4 @@
+﻿Architecture
+	MVC reveives http request.
+	Then, it handles such request, serializes the request/response with Model.
+	It looks there are only Model and Controller.
