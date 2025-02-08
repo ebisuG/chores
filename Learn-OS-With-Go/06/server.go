@@ -58,6 +58,7 @@ func main() {
 		//keep-alive 対応版
 		go func() {
 			fmt.Printf("Accept %v\n", conn.RemoteAddr())
+			//最初に作成したconnを再利用するため、for-loopで繰り返しrequestを読み込む
 			for {
 				conn.SetReadDeadline(time.Now().Add(5 * time.Second))
 				request, err := http.ReadRequest(bufio.NewReader(conn))
