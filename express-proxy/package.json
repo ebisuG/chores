@@ -1,0 +1,21 @@
+{
+  "name": "express-proxy",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/express-http-proxy": "^1.6.6",
+    "@types/nodemon": "^1.19.6",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-http-proxy": "^2.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
