@@ -1,6 +1,7 @@
-import express from "express"
-import proxy from "express-http-proxy"
+import express from 'express';
 import dotenv from "dotenv"
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import type { Request, Response, NextFunction } from 'express';
 
 dotenv.config()
 
@@ -9,15 +10,17 @@ const API_PORT = process.env.API_PORT
 const WEB_PORT = process.env.WEB_PORT
 const app = express()
 
-//Type http://localhost:50002/proxy to browser URL, get "hello from "+WEB_PORT
-app.use('/proxy', proxy("localhost:"+WEB_PORT))
-// app.use('/proxy', (req, res)=>{
-// // app.use('/proxy', (req, res, next)=>{
-//     console.log("hostname : ", req.hostname)
-//     proxy("localhost:"+WEB_PORT)
-//     // proxy(req.hostname+":"+WEB_PORT)
-//     // next()
-// })
+const proxyWeb = createProxyMiddleware<Request, Response>({
+    target: `http://localhost:${WEB_PORT}/webserver/`,
+    changeOrigin: true,
+})
+const proxyApi = createProxyMiddleware<Request, Response>({
+    target: `http://localhost:${API_PORT}/api/`,
+    changeOrigin: true,
+  })
+
+app.use('/proxy/web/', proxyWeb);
+app.use('/proxy/api/', proxyApi);
 console.log("proxy at ", PROXY_PORT)
 console.log("proxy to : ", "localhost:"+WEB_PORT)
 app.listen(PROXY_PORT)
