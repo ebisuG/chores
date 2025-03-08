@@ -1,0 +1,9 @@
+thread from programm : virtual CPU that has curernt processing state of programm
+thread from OS/CPU : state preserved processing, stopping time
+
+OS processes a thread and changes it to the other thread.
+It starts processing with a certain order every short seconds.
+
+Thread is mapped to CPU core, but goroutine is mapped to an OS's thread that is one virtual CPU.
+
+So, Go runtime a kind of imitates OS. 
