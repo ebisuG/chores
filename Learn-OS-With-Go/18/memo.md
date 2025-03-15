@@ -62,3 +62,17 @@ forループ内をgoroutineにすれば並列化できる。
 
 ・決まった数のgoroutineでタスクを消化する（ワーカープール）
 workerPool.goを参照
+
+・future/promise
+future_promise.goを参照
+JSのpromiseみたいな感じ？
+結果は一度だけ送信・受診される
+goだとgoroutineとチャネルの活用で表現できる
+
+・ReactiveX
+監視する値が変化したときに、通知する
+future/promiseとは違い、何度でもイベントを発行・受信できる
+
+・アクターモデル
+producer/comsumerパターンに似ているが、より多い数のアクターが自律して動作する。
+
