@@ -10,6 +10,7 @@ public class HelloWorldController : Controller
     //Index() can be accessed with /HelloWorld
     //public string Index()
     public IActionResult Index()
+    //This View automatically finds default view that has the same name as the action method, Index in this example.
     {
         //return "This is my defaul action...";
         return View();  
@@ -17,9 +18,15 @@ public class HelloWorldController : Controller
 
     //Welocme can be accessed with /HelloWorld/Welocme
     //name and numtimes are query parameter
-    public string Welcome(string name, int numTimes=1)
+    //public string Welcome(string name, int numTimes=1)
+    //{
+    //    return HtmlEncoder.Default.Encode($"Hello {name}, Numtime is ; {numTimes}");
+    //}
+    public IActionResult Welcome(string name, int numTimes = 1)
     {
-        return HtmlEncoder.Default.Encode($"Hello {name}, Numtime is ; {numTimes}");
+        ViewData["Message"] = "Hello" + name;
+        ViewData["NumTimes"] = numTimes;
+        return View();
     }
 
     public ActionResult Welcome2()
